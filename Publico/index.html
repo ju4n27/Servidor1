@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaginaServidor</title>
+</head>
+<body>
+    <h1>HolaMundo!</h1>
+    <p>
+        Coordenadas: <span id="coord"></span>
+    </p>
+    <button type="submit" onclick="mandarData()">Submit</button>
+    <script>
+    function mandarData(){
+        if('geolocation' in navigator){
+            navigator.geolocation.getCurrentPosition(async pos => {
+                const lat= pos.coords.latitude;
+                const long= pos.coords.longitude;
+                document.getElementById('coord').textContent= '(Lat: '+lat+', Long: '+long+')';
+                const data= {lat, long};
+                console.log(data);
+                const options= {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                };
+                const response= await fetch('/api', options);
+                const json= await response.json();
+                console.log("**Respuesta del servidor:");
+                console.log(json);
+            });
+        }
+        else{ 
+            console.log("No se puede ubicar.");
+        }
+    }
+    </script>
+</body>
+</html>

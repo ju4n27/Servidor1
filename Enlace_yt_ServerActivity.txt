@@ -1,0 +1,32 @@
+https://www.youtube.com/watch?v=tc8DU14qX6I&list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X&index=3
+
+https://www.youtube.com/watch?v=5-ptp9tRApM&list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X&index=5
+
+https://www.youtube.com/watch?v=wxbQP1LMZsw {Como hacer un servidor (software)
+o como hostear una pagina web (html)}
+
+https://www.youtube.com/watch?v=Kw5tC5nQMRY {Fetch api}{ESTEE}
+
+
+******************
+en Ping&net:
+hallar el IP del Raspberry Pi, apuntarlo
+
+en JuicySsh:
+pi@192.168.42.* {ponerlo aquí}
+
+poner el password {raspberry}
+
+---------
+grep --> salió: nada
+
+ip address-->
+lo:<LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state INKNOWN group default qlen 1000
+	link loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+	inet 127.0.0.1/8 scope host lo
+		valid_lft forever preferred_lft forever
+	inet6 ::1/128 scope host
+		valid_lft forever preferred_lft forever
+
+
+nameserver: 8.8.8.8

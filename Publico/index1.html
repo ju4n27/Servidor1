@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaginaServidor</title>
+</head>
+<body>
+    <h1>HolaMundo!</h1>
+    <p>
+        Coordenadas: <span id="coord"></span>
+    </p>
+    <button type="submit">Submit</button>
+    <script>
+    if('geolocation' in navigator){
+        console.log('Ubicable!');
+        navigator.geolocation.getCurrentPosition(pos => {
+            const lat= pos.coords.latitude;
+            const long= pos.coords.longitude;
+            const text= '(Lat: '+lat+', Long: '+long+')';
+            document.getElementById('coord').textContent= text;
+            const data= {lat,long};
+            console.log(data);
+            const options= {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            };
+            fetch('/api', options).them(respuesta=>{
+                console.log("**Respuesta del servidor:");
+                console.log(respuesta.body);
+            });
+        });
+    }
+    else{ 
+        console.log("Geolocation is not supported by this browser.");
+    }
+    </script>
+</body>
+</html>
